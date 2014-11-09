@@ -4,5 +4,4 @@ The kernel boots with UART driver to test TrustZone feature.
 Install
 Replace the kernel.img on mini-sd card with this kernel.img.
 
-Contact: Dongli Zhang
-Email: dongli.zhang0129@gmail.com
+Contact: Vamsi
