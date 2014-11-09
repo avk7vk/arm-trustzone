@@ -6,17 +6,17 @@ LD = $(CROSS_PREFIX)ld
 OBJCOPY = $(CROSS_PREFIX)objcopy
 OBJDUMP = $(CROSS_PREFIX)objdump
 
-CFLAGS = -Wall -O2 -nostdlib -nostartfiles -ffreestanding 
+CFLAGS = -Wall -O0 -nostdlib -nostartfiles -ffreestanding 
 
 all : kernel.img
 
 entry.o : entry.S
 	$(AS) entry.S -o entry.o
 
-main.o : main.c io.h
+main.o : main.c
 	$(CC) $(CFLAGS) -c main.c -o main.o
 
-uart.o : uart.c io.h
+uart.o : uart.c
 	$(CC) $(CFLAGS) -c uart.c -o uart.o
 
 kernel.img : kernel.ld entry.o uart.o main.o 

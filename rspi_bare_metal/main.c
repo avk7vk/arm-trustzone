@@ -2,6 +2,17 @@
 #include "uart.h"
 #include <stdint.h>
 
+void copy_vectors(void) {
+ extern uint32_t vectors_start;
+ extern uint32_t vectors_end;
+ uint32_t *vectors_src = &vectors_start;
+ uint32_t *vectors_dst = (uint32_t *)0;
+
+	while(vectors_src < &vectors_end) {
+	 	*vectors_dst++ = *vectors_src++;
+	}
+}
+
 void uprint(char *s)
 {
 	int i = 0;
@@ -107,7 +118,7 @@ int bootmain(void)
 
 	// print char
 	uart_send('$');
-
+	/*
 	char c;
 	int i = 0;
 	while(1)
@@ -133,7 +144,7 @@ int bootmain(void)
 			i++;
 		}
 	}
-
+    */
 	cprintf("Before SWI Code!\n");
 	asm volatile("swi #8");
 	cprintf("After SWI Code!\n");

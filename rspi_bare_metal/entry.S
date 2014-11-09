@@ -21,9 +21,11 @@ vectors_start:
     fiq_handler_addr: .word fiq_handler
 vectors_end:
 
-.space 0x200000-0x8004, 0
+@.space 0x200000-0x8004, 0
 
 reset_handler:
+    ldr sp, =STACK_ADR
+    bl copy_vectors
     bl bootmain
     b .
 
