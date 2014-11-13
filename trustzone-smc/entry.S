@@ -27,7 +27,7 @@
 	.global _start
 	.global _ns_start
 	.global _ns_end
-
+.align 5
 _start:
 	b reset
 	ldr pc, UndefAddr    
@@ -48,6 +48,7 @@ FIQAddr:        .word FIQHandler
 @ ----------------------------------------------------------
 @ Normal World Exception Vectors
 @ ----------------------------------------------------------
+.align 5
 _ns_start:
 	ldr pc, ns_Reset
 	ldr pc, ns_UndefAddr    
@@ -66,7 +67,8 @@ ns_DAbortAddr:     .word ns_DAbortHandler
 ns_ReservedAddr:   .word 0
 ns_IRQAddr:        .word ns_IRQHandler
 ns_FIQAddr:        .word ns_FIQHandler
-_ns_end:
+
+.align 4
 reset:
 #	bl CPU_SVC32_MODE
 #	bl Disable_MMU_L1cache

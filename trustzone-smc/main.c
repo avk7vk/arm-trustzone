@@ -88,17 +88,6 @@ void cprintf(char *fmt, ...)
 
 #define SYSTIMERCLO 0x20003004
 
-void copy_vectors(void) {
- extern uint32_t _ns_start;
- extern uint32_t _ns_end;
- uint32_t *vectors_src = &_ns_start;
- uint32_t *vectors_dst = (uint32_t *)0;
-
-	while(vectors_src < &_ns_end) {
-	 	*vectors_dst++ = *vectors_src++;
-	}
-}
-
 void secure_swi() 
 {
 	cprintf("In Secure World's SWI Handler\n");
