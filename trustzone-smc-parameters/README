@@ -1,7 +1,12 @@
-This is a tiny bare metal kernel running on Raspberry Pi B+. 
-The kernel boots with UART driver to test TrustZone feature.
+In this code we try to pass parameters between two worlds and print them in the SMC code. 
 
-Install
-Replace the kernel.img on mini-sd card with this kernel.img.
+SMC instruction is of the form : SMC #imm4
+ -	imm4 value can be used by the smc handler but arm manual on SMC
+  	calling conventions suggests us to use 0 for the imm4 value.
+ - 	Parameters should be passed in the registers R0 - R3.
+
+Reference :
+1. SMC CALLING CONVENTION System Software on ARM® Platforms (PDF) 
 
 Contact: Vamsi
+vamsikrishna.atluri@stonybrook.edu
